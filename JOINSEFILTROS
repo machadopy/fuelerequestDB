@@ -1,0 +1,35 @@
+Select
+    r.id_reembolso,
+    r.data AS Data_SReembolso,
+    r.km_inicial,
+    r.km_final,
+    (r.km_final - r.km_inicial) AS KM_percorrido,
+    ((r.km_final - r.km_inicial)/10 * 6.79) AS valor_reembolso,
+    vei.marca as veiculo_marca,
+    vei.modelo as veiculo_modelo,
+    vei.PLACA as placa,
+    mt.nome as Nome_Motorista,
+    mt.cnh as CNH_motorista,
+    adm.nome as Administrador
+From reembolso r
+Join veiculo vei
+    ON vei.id_veiculo = r.id_veiculo
+JOIN motorista mt
+    ON mt.id_motorista = vei.id_motorista
+Join admfrota adm
+    On adm.id_admfrota = r.id_admfrota;
+    
+
+select
+    vei.marca as marca_veiculo,
+    vei.modelo,
+    r.data As data_reembolso
+From reembolso r
+join veiculo vei
+    on vei.id_veiculo = r.id_veiculo
+Where vei.marca = 'fiat';
+
+select
+UPPER(marca) as marca_veiculo,
+UPPER(modelo) AS modelo_veiculo
+from veiculo;

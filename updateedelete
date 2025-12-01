@@ -1,0 +1,21 @@
+UPDATE motorista
+SET telefone = '41988887777'
+WHERE nome = 'MACHADO VITOR';
+
+UPDATE veiculo
+SET modelo = 'Uno Vivace'
+WHERE PLACA = 'AZW3G72';
+
+UPDATE reembolso
+SET data = '01/12/2025'
+WHERE id_reembolso = 3;
+
+
+DELETE FROM reembolso
+WHERE km_final = '100';
+
+DELETE FROM veiculo
+WHERE marca = 'chevrolet' AND modelo = 'omega';
+
+DELETE FROM motorista
+WHERE telefone IS NULL;

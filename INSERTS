@@ -1,0 +1,34 @@
+--- insert ---
+Insert INTO motorista(nome, telefone, cnh)
+VALUES
+('MACHADO VITOR','419999999', '12345678912'),
+('VITOR MACHADO','999999941', '34567891212'),
+('ROGERINHO DO MANGUE','219999941', '15515591212');
+
+Insert INTO veiculo(marca, modelo, placa, id_motorista)
+VALUES
+('fiat','uno', 'AZW3G72', 1),
+('fiat','palio', 'AZA3G79', 2),
+('chevrolet','omega', 'OMG155', 3);
+
+Insert INTO admfrota(nome, telefone)
+VALUES
+('Juca Supervisao','41900000000');
+
+Insert INTO reembolso(data, km_inicial, km_final, id_motorista, id_veiculo, id_admfrota)
+VALUES
+('30/11/2025','50', '100', 1, 1, 1),
+('30/11/2025','50', '150', 2, 2, 1),
+('30/11/2025','50', '200', 3, 3, 1);
+
+select * from reembolso;
+
+select
+    re.id_reembolso,
+    re.data,
+    a.nome AS admfrota,
+    a.telefone
+From reembolso re
+JOIN admfrota a ON a.id_admfrota = re.id_admfrota
+
+

@@ -1,0 +1,41 @@
+BEGIN TRANSACTION;
+
+Create table motorista(
+    id_motorista INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    telefone TEXT(15)
+);
+
+---tabela veiculo---
+
+Create table veiculo(
+    id_veiculo INTEGER PRIMARY KEY AUTOINCREMENT,
+    marca TEXT(30),
+    modelo TEXT(30),
+    PLACA TEXT(7),
+    id_motorista INTEGER,
+    FOREIGN KEY(id_motorista) REFERENCES motorista(id_motorista)
+    );
+
+---tabela admffrota---    
+
+Create table admfrota(
+    id_admfrota INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    telefone TEXT(15)
+);
+---tabela reembolso---
+Create Table reembolso(
+    id_reembolso INTEGER PRIMARY KEY AUTOINCREMENT,
+    data TEXT NOT NULL,
+    km_inicial TEXT,
+    km_final TEXT,
+    id_motorista INTEGER,
+    id_veiculo INTEGER,
+    id_admfrota INTEGER,
+    FOREIGN KEY (id_motorista) REFERENCES motorista(id_motorista),
+    FOREIGN KEY (id_veiculo) REFERENCES veiculo(id_veiculo),
+    FOREIGN KEY (id_admfrota) REFERENCES admfrota(id_admfrota)
+);
+
+commit
